@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "544958495651",
+    "project_id": "capsuleapp-6e39b",
+    "storage_bucket": "capsuleapp-6e39b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544958495651:android:bdfc4c0fe2206c7c2c7816",
+        "android_client_info": {
+          "package_name": "com.muhsin.capsuleadminapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544958495651-19n2rpue36ki56u0v06vn967tviegmm3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3a5fyMP0WZkDa_mUqnFFl1wbIJcat0Sc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544958495651-19n2rpue36ki56u0v06vn967tviegmm3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

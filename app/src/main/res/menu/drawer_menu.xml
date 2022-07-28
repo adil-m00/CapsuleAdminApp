@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/dashboard"
+            android:icon="@drawable/dashboard"
+            android:title="Dashboard" />
+
+    <group
+        android:id="@+id/text_color_group"
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/studyMaterials"
+            android:icon="@drawable/details"
+            android:title="Study Material" />
+
+
+
+        <item
+            android:id="@+id/categories"
+            android:icon="@drawable/details"
+            android:title="Categories" />
+
+        <item
+            android:id="@+id/subCat"
+            android:icon="@drawable/details"
+            android:title="Sub Categories" />
+    </group>
+
+
+
+    <group
+        android:id="@+id/text_color_group1"
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/allmcqs"
+            android:icon="@drawable/job_profile"
+            android:title="All MCQS" />
+
+
+        <item
+            android:id="@+id/subCatMcqs"
+            android:icon="@drawable/job_profile"
+            android:title="Sub Category MCQS" />
+
+
+
+
+    </group>
+
+
+
+
+
+
+
+
+
+
+    </group>
+
+    <group
+        android:id="@+id/menu_topbel"
+        android:checkableBehavior="none">
+
+        <item android:id="@+id/settings"
+            android:icon="@drawable/settings"
+            android:title="Settings"/>
+
+        <item android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="Logout"/>
+    </group>
+</menu>
