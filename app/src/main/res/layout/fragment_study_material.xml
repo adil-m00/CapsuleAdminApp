@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:text="Study Material"
         android:gravity="center"
+        android:id="@+id/materialsTexts"
         android:textColor="@color/black"
         android:textSize="@dimen/_16sdp"
         android:layout_marginTop="@dimen/_5sdp"/>
@@ -18,8 +19,173 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/materialsTexts"
         android:id="@+id/recyclerView"
         android:layout_margin="@dimen/_10sdp"
         />
 
-</LinearLayout>
+
+    <ImageView
+        android:id="@+id/addCategoryBtns"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:src="@drawable/adds" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:id="@+id/addLayout"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:alpha="0.7"/>
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:src="@drawable/close" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Study Material"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:hint="Enter title"
+                    android:id="@+id/titles"
+                    android:textSize="@dimen/_11sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_60sdp"
+                    android:hint="Enter Description"
+                    android:id="@+id/description"
+                    android:textSize="@dimen/_11sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:hint="Enter title"
+                    android:id="@+id/everyone"
+                    android:textSize="@dimen/_11sdp"
+                    android:entries="@array/everyone"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please Select Category"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:hint="Enter title"
+                    android:id="@+id/category"
+                    android:textSize="@dimen/_11sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                   />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please Select Sub Category"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:hint="Enter title"
+                    android:id="@+id/SubCategory"
+                    android:textSize="@dimen/_11sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:hint="Enter title"
+                    android:id="@+id/videoType"
+                    android:textSize="@dimen/_11sdp"
+                    android:entries="@array/videoType"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:text="Select File"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp"
+                    android:id="@+id/video"
+                    android:entries="@array/videoType"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/gredient_color"
+                    android:text="Add"
+                    android:textColor="@color/black"
+                    android:id="@+id/addCategory"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+
+</RelativeLayout>

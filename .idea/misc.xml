@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_edit_all_mcqs.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_edit_category.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_edit_sub_category.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/categories_adapter.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_all_m_c_q_s.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19610507246376813" />
@@ -15,6 +19,10 @@
         <entry key="app/src/main/res/layout/fragment_sub_category.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_update_settings.xml" value="0.1897644927536232" />
         <entry key="app/src/main/res/layout/heade_layout.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/material_adapter.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/mcqs_adapter.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/sub_category_adapter.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/sub_mcqs_adapter.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/menu/drawer_menu.xml" value="0.23072916666666668" />
       </map>
     </option>

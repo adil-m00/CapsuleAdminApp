@@ -66,14 +66,23 @@ public class Login extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful())
                             {
-                                String userId = firebaseAuth.getCurrentUser().getUid().toString();
-                                SharedPreferences sharedPreferences = getSharedPreferences("My-Ref",MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString("userId",userId);
-                                editor.commit();
-                                editor.apply();
-                                startActivity(new Intent(Login.this,MainActivity.class));
-                                finish();
+                                if(Email.equals("admin@gmail.com")) {
+                                    String userId = firebaseAuth.getCurrentUser().getUid().toString();
+                                    SharedPreferences sharedPreferences = getSharedPreferences("My-Ref", MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("userId", userId);
+                                    editor.putString("Emails", Email);
+                                    editor.putString("Passwords", Password);
+                                    editor.commit();
+                                    editor.apply();
+                                    startActivity(new Intent(Login.this, MainActivity.class));
+                                    finish();
+                                }
+                                else
+                                {
+                                    Toast.makeText(Login.this, "Please Enter correct email", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
