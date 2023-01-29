@@ -18,12 +18,14 @@
         android:layout_marginTop="@dimen/_5sdp"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/texts"
-        android:id="@+id/recyclerView"
-        android:layout_margin="@dimen/_10sdp"
-        />
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp" />
 
     <ImageView
         android:id="@+id/addCategoryBtns"

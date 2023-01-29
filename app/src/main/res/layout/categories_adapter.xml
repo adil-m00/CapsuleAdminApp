@@ -18,8 +18,22 @@
 
        <LinearLayout
            android:layout_width="match_parent"
+           android:layout_gravity="center"
+           android:gravity="center"
+           android:layout_marginTop="@dimen/_10sdp"
            android:layout_height="wrap_content">
 
+           <ImageView
+               android:layout_width="@dimen/_30sdp"
+               android:layout_height="@dimen/_30sdp"
+               android:id="@+id/editImage"
+               android:src="@drawable/edit_image"/>
+           <ImageView
+               android:layout_width="@dimen/_30sdp"
+               android:layout_height="@dimen/_30sdp"
+               android:id="@+id/deleteImage"
+               android:layout_marginLeft="@dimen/_10sdp"
+               android:src="@drawable/delete_image"/>
        </LinearLayout>
    </LinearLayout>
 

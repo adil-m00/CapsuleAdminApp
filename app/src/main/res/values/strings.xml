@@ -23,4 +23,11 @@
         <item>PDF</item>
     </string-array>
 
+    <string-array name="section">
+        <item>Biology</item>
+        <item>Physics</item>
+        <item>Chemistry</item>
+        <item>Full Length Test</item>
+    </string-array>
+
 </resources>

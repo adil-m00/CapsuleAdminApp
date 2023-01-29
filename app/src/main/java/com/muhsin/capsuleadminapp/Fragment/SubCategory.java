@@ -45,7 +45,7 @@ public class SubCategory extends Fragment {
     private DatabaseReference databaseReference;
     private ImageView close;
     private RelativeLayout addLayout;
-    private Spinner category;
+    private Spinner category,section;
     private EditText subCategory;
     private Button addCategory;
 
@@ -69,6 +69,7 @@ public class SubCategory extends Fragment {
         category = view.findViewById(R.id.category);
         subCategory = view.findViewById(R.id.subCategory);
         addCategory = view.findViewById(R.id.addSub);
+        section = view.findViewById(R.id.section);
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +114,7 @@ public class SubCategory extends Fragment {
                     HashMap<String,Object> hashMap = new HashMap<>();
                     hashMap.put("Category",category.getSelectedItem().toString());
                     hashMap.put("SubCategory",SubCate);
+                    hashMap.put("Section",section.getSelectedItem().toString());
                     databaseReference.child("subCategories").child(String.valueOf(System.currentTimeMillis())).updateChildren(hashMap);
                     Toast.makeText(getActivity(), "Sub-Category has been added", Toast.LENGTH_SHORT).show();
                     addLayout.setVisibility(View.GONE);
@@ -175,10 +177,11 @@ public class SubCategory extends Fragment {
         Activity activity;
         String TAG;
         public class MyViewHolder extends RecyclerView.ViewHolder  {
-            private TextView categoryName;
+            private TextView categoryName,subCategoryName;
             public MyViewHolder(View view) {
                 super(view);
                 categoryName = view.findViewById(R.id.categoryName);
+                subCategoryName = view.findViewById(R.id.subCategoryName);
             }
         }
         public MyAdapter(Context c, Activity a , ArrayList<SubCategoy> CompanyJobModal){
@@ -196,6 +199,10 @@ public class SubCategory extends Fragment {
 
         @Override
         public void onBindViewHolder(final MyAdapter.MyViewHolder viewHolder, final int position) {
+            SubCategoy modal = data.get(position);
+
+            viewHolder.categoryName.setText(modal.getCategory());
+            viewHolder.subCategoryName.setText(modal.getSubCategory());
 
         }
         @Override

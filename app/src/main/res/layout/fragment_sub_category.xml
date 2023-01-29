@@ -17,12 +17,14 @@
         android:layout_marginTop="@dimen/_5sdp"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/subCate"
-        android:id="@+id/recyclerView"
-        android:layout_margin="@dimen/_10sdp"
-        />
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp" />
 
     <ImageView
         android:id="@+id/addCategoryBtns"
@@ -79,6 +81,23 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_16sdp"
                     android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Section"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:id="@+id/section"
+                    android:entries="@array/section"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
 
 
                 <TextView

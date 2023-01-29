@@ -5,12 +5,15 @@ import static android.app.Activity.RESULT_OK;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +27,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -39,6 +43,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.muhsin.capsuleadminapp.Activities.EditStudyMaterial;
+import com.muhsin.capsuleadminapp.Activities.Login;
+import com.muhsin.capsuleadminapp.Activities.MainActivity;
 import com.muhsin.capsuleadminapp.Modal.CategoriesModal;
 import com.muhsin.capsuleadminapp.Modal.StudyMaterialModal;
 import com.muhsin.capsuleadminapp.Modal.SubCategoy;
@@ -113,7 +120,7 @@ public class StudyMaterial extends Fragment {
         video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(VideoSelect == "")
+                if(VideoSelect == null)
                 {
                     Toast.makeText(getActivity(), "Please First select type", Toast.LENGTH_SHORT).show();
                     return;
@@ -197,7 +204,6 @@ public class StudyMaterial extends Fragment {
                                     hashMap.put("Title",Title);
                                     hashMap.put("Description",Description);
                                     hashMap.put("File",uri.toString());
-                                    hashMap.put("Type",VideoSelect);
                                     hashMap.put("Status",everyone.getSelectedItem().toString());
                                     hashMap.put("category",category.getSelectedItem().toString());
                                     hashMap.put("subCategory",SubCategory.getSelectedItem().toString());
@@ -315,6 +321,7 @@ public class StudyMaterial extends Fragment {
         String TAG;
         public class MyViewHolder extends RecyclerView.ViewHolder  {
             private TextView title,category,SubCategory,available,videoStatus,description;
+            private ImageView editImage,deleteImage;
             public MyViewHolder(View view) {
                 super(view);
                 title = view.findViewById(R.id.title);
@@ -323,6 +330,8 @@ public class StudyMaterial extends Fragment {
                 available = view.findViewById(R.id.available);
                 videoStatus = view.findViewById(R.id.videoStatus);
                 description = view.findViewById(R.id.description);
+                deleteImage = view.findViewById(R.id.deleteImage);
+                editImage = view.findViewById(R.id.editImage);
             }
         }
         public MyAdapter(Context c, Activity a , ArrayList<StudyMaterialModal> CompanyJobModal){
@@ -348,6 +357,44 @@ public class StudyMaterial extends Fragment {
             viewHolder.description.setText(modal.getDescription());
             viewHolder.title.setText(modal.getTitle());
             viewHolder.videoStatus.setText("File Type : "+modal.getMaterialType());
+
+            viewHolder.editImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(), EditStudyMaterial.class).putExtra("materialId",modal.getId()));
+                }
+            });
+            viewHolder.deleteImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String idss = modal.getId();
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+                    builder1.setMessage("Are you sure you want to delete?.");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                   databaseReference.child(idss).removeValue();
+                                    Toast.makeText(getActivity(), "Material has been deleted", Toast.LENGTH_SHORT).show();
+                                    myAdapter.notifyDataSetChanged();
+                                    return;
+                                }
+                            });
+
+                    builder1.setNegativeButton(
+                            "No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                }
+            });
         }
         @Override
         public int getItemCount() {
@@ -377,12 +424,10 @@ public class StudyMaterial extends Fragment {
 
         if(requestCode==100 && resultCode==RESULT_OK){
             imageUri = data.getData();
-            VideoSelect="123";
             videoorpdfSelect  = "123";
         }
         if(requestCode==200 && resultCode==RESULT_OK){
             imageUri = data.getData();
-            VideoSelect="123";
             videoorpdfSelect = "123";
         }
     }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.muhsin.capsuleadminapp.Activities.EditCategory;
 import com.muhsin.capsuleadminapp.Modal.CategoriesModal;
 import com.muhsin.capsuleadminapp.R;
 
@@ -147,9 +149,12 @@ public class Category extends Fragment {
         String TAG;
         public class MyViewHolder extends RecyclerView.ViewHolder  {
             private TextView categoryName;
+            private ImageView editImage,deleteImage;
             public MyViewHolder(View view) {
                 super(view);
                 categoryName = view.findViewById(R.id.categoryName);
+                editImage = view.findViewById(R.id.editImage);
+                deleteImage = view.findViewById(R.id.deleteImage);
             }
         }
         public MyAdapter(Context c, Activity a , ArrayList<CategoriesModal> CompanyJobModal){
@@ -170,6 +175,43 @@ public class Category extends Fragment {
             CategoriesModal modal = data.get(position);
 
             viewHolder.categoryName.setText(modal.getCategory());
+            viewHolder.editImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(), EditCategory.class).putExtra("categId",modal.getId()));
+                }
+            });
+            viewHolder.deleteImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String idss = modal.getId();
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+                    builder1.setMessage("Are you sure you want to delete?.");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    databaseReference.child(idss).removeValue();
+                                    Toast.makeText(getActivity(), "Material has been deleted", Toast.LENGTH_SHORT).show();
+                                    myAdapter.notifyDataSetChanged();
+                                    return;
+                                }
+                            });
+
+                    builder1.setNegativeButton(
+                            "No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                }
+            });
         }
         @Override
         public int getItemCount() {
